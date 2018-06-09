@@ -13,7 +13,7 @@ export class ImageComponent implements OnInit {
   // constant for swipe action: left or right
   SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
 
-  private dogNames = require('dog-names');
+  //private dogNames = require('dog-names');
 
   public dog = {
     name: '',
@@ -32,7 +32,7 @@ export class ImageComponent implements OnInit {
   private getDog() {
     this.dogs.getDogImage().subscribe(val => {
       this.dog = {
-        name: this.dogNames.allRandom(),
+        name: "Tom",//this.dogNames.allRandom(),
         image: val.message
       }
     });
