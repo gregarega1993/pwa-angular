@@ -1,0 +1,8 @@
+<mat-grid-list cols="3" rowHeight="1:1">
+  <mat-grid-tile *ngFor="let dog of dogsList">
+    <div>
+      <div><img class="avatar" src="{{ dog.image }}"></div>
+      <div style="text-align: center">{{ dog.name }}</div>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
