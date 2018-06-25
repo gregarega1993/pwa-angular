@@ -20,5 +20,19 @@
         "/assets/**"
       ]
     }
-  }]
+  }],
+  "dataGroups": [
+    {
+      "name": "images",
+      "urls": [
+        "https://dog.ceo/api/breeds/image/random"
+      ],
+      "cacheConfig": {
+        "maxSize": 5,
+        "maxAge": "6h",
+        "timeout": "10s",
+        "strategy": "freshness"
+      }
+    }
+  ]
 }

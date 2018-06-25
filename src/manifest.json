@@ -1,8 +1,8 @@
 {
-  "name": "pwa-angular",
-  "short_name": "pwa-angular",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "pwangular",
+  "short_name": "pwangular",
+  "theme_color": "#f15f79",
+  "background_color": "#f15f79",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",

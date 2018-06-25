@@ -4,15 +4,70 @@
   background-color: white;
   padding: 0;
   margin: 0;
-  height: calc(100vh - 56px);
+  height: calc(100vh - 30vh - 60px);
+  min-width: 400px;
+  text-align: center;
+  position: relative;
+  margin-top: -64px;
+}
+
+.example-content {
+  padding: 20px
 }
 
 .mat-card-image {
-  height: 50vh;
+  height: 50%;
   width: auto;
   max-width: 400px;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mat-card-image:first-child {
+  margin: 0;
 }
 
 .controls {
   margin: 0 20%;
+}
+
+.background-image {
+  height: 50%;
+  background-color: black;
+}
+
+@media only screen and (max-width: 600px) {
+  .example-card {
+    height: calc(100vh - 56px);
+    margin-top: 0;
+    width: 100vw;
+    max-width: 100vw;
+  }
+}
+
+.dog-name {
+  font-weight: 700; 
+  font-size: 20px; 
+  margin-bottom: 10px
+}
+
+.dog-description {
+  margin: 0 0 20px 0
+}
+
+.button-clear {
+  background-color: #f95555; 
+  box-shadow: none; 
+  float: left
+}
+
+.button-favorite {
+  background-color: #55f9c4; 
+  box-shadow: none; 
+  float: right
 }

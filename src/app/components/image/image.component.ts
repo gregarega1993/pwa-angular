@@ -2,7 +2,7 @@ declare var require: any;
 
 import { Component, OnInit } from '@angular/core';
 import { DogsService } from '../../services/dogs.service';
-import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-image',
@@ -10,18 +10,15 @@ import { Observable } from 'rxjs';
   styleUrls: ['./image.component.css']
 })
 export class ImageComponent implements OnInit {
-  // constant for swipe action: left or right
   SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
-
-  //private dogNames = require('dog-names');
-
+  private dogNames = require('dog-names');
   public dog = {
     name: '',
     image: ''
   }
-  //public imageUrl: '';
 
   constructor(
+    private snackbar: MatSnackBar,
     private dogs: DogsService
   ) { }
 
@@ -30,32 +27,38 @@ export class ImageComponent implements OnInit {
   }
 
   private getDog() {
-    this.dogs.getDogImage().subscribe(val => {
-      this.dog = {
-        name: "Tom",//this.dogNames.allRandom(),
-        image: val.message
+    this.dogs.getDogImage().subscribe(
+      data => {
+        this.dog = {
+          name: this.dogNames.allRandom(),
+          image: data.message
+        }
+      },
+      error => {
+        this.snackbar.open('The page is currently offline', 'Close', {
+          duration: 10000
+        });
       }
-    });
+    );
   }
 
-  public like() {
+  public favorite() {
     this.dogs.addDog(this.dog);
     this.getDog();
   }
 
-  public skip() {
+  public clear() {
     this.getDog();
   }
 
   public swipe(action) {
-    switch(action) {
+    switch (action) {
       case 'swipeleft':
-        this.skip();
+        this.clear();
         break;
       case 'swiperight':
-        this.like();
+        this.favorite();
         break;
     }
   }
-
 }

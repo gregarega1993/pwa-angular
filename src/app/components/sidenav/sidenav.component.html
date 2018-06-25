@@ -1,14 +1,14 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
   <mat-toolbar color="primary" class="example-toolbar">
     <button mat-icon-button (click)="snav.toggle()">
-      <mat-icon>menu</mat-icon>
+      <img src="./assets/paw.svg" width="25px" />
     </button>
-    <h1 class="example-app-name">Responsive App</h1>
+    <h1>
+      pwangular
+    </h1>
   </mat-toolbar>
-
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56"
-      style="width: 100%; padding: 20px">
+    <mat-sidenav class="sidenav-box" #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" style="padding: 20px">
       <form class="example-form">
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Search" (keyup)="onSearchType($event.target.value)">
@@ -16,7 +16,6 @@
       </form>
       <app-list></app-list>
     </mat-sidenav>
-
     <mat-sidenav-content>
       <div class="container">
         <app-image></app-image>

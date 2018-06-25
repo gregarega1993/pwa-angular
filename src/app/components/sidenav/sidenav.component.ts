@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { Subject, BehaviorSubject, of } from 'rxjs';
-import { debounce, debounceTime, distinct, distinctUntilChanged } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { DogsService } from '../../services/dogs.service';
 
 @Component({
@@ -10,20 +10,8 @@ import { DogsService } from '../../services/dogs.service';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent implements OnInit, OnDestroy {
-
   private searchUpdated = new BehaviorSubject('');
-
-  mobileQuery: MediaQueryList;
-
-  fillerNav = Array(50).fill(0).map((_, i) => `Nav Item ${i + 1}`);
-
-  fillerContent = Array(50).fill(0).map(() =>
-    `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`);
-
+  public mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private dogs: DogsService) {
@@ -34,9 +22,9 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.searchUpdated.pipe(
-        debounceTime(500),
-        distinctUntilChanged()
-      ).subscribe(val => this.dogs.searchByName(val));
+      debounceTime(500),
+      distinctUntilChanged()
+    ).subscribe(val => this.dogs.searchByName(val));
   }
 
   ngOnDestroy(): void {

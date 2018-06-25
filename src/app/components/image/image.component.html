@@ -1,14 +1,14 @@
 <mat-card class="example-card">
+  <div class="background-image" (swipeleft)="swipe($event.type)" (swiperight)="swipe($event.type)"></div>
   <img mat-card-image src="{{ dog.image }}" (swipeleft)="swipe($event.type)" (swiperight)="swipe($event.type)">
-  <mat-card-content>
-    <p>
-      {{ dog.name }}
-    </p>
+  <mat-card-content class="example-content">
+    <div class="dog-name">{{ dog.name }}</div>
+    <div class="dog-description">Good dog</div>
     <div class="controls">
-      <button mat-fab style="background-color: #f95555; box-shadow: none; float: left" (click)="skip()">
+      <button mat-fab class="button-clear" (click)="clear()">
         <mat-icon>clear</mat-icon>
       </button>
-      <button mat-fab style="background-color: #55f9c4; box-shadow: none; float: right" (click)="like()">
+      <button mat-fab class="button-favorite" (click)="favorite()">
         <mat-icon>favorite</mat-icon>
       </button>
     </div>

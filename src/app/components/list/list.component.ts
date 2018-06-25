@@ -7,17 +7,13 @@ import { DogsService } from '../../services/dogs.service';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-
   public dogsList = [];
 
-  constructor(
-    private dogs: DogsService
-  ) { }
+  constructor(private dogs: DogsService) { }
 
   ngOnInit() {
     this.dogs.dogsSubject.subscribe(val => {
       this.dogsList = val;
     })
   }
-
 }

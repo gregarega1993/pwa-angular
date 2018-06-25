@@ -4,14 +4,11 @@ import { Observable, of, BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class DogsService {
-
   private dogs = [];
   private dogsFiltered = [];
   public dogsSubject = new BehaviorSubject([]);
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) { }
 
   public getDogImage(): Observable<any> {
     return this.http.get('https://dog.ceo/api/breeds/image/random');
